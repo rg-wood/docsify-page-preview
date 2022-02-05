@@ -1,18 +1,31 @@
 {
-  "name": "docsify-link-preview",
-  "version": "0.1.1",
-  "description": "Link preview for docsify",
+  "name": "docsify-page-preview",
+  "version": "0.0.0",
+  "description": "Docsify Page previews",
   "files": [
     "src"
   ],
+  "keywords": [
+    "docsify",
+    "javascript",
+    "preview"
+  ],
   "main": "src/index.js",
-  "repository": "https://github.com/puria/docsify-link-preview",
+  "repository": "https://github.com/rgwood/docsify-page-preview",
   "bugs": {
-    "url": "https://github.com/puria/docsify-link-preview/issues"
+    "url": "https://github.com/rgwood/docsify-page-preview/issues"
   },
-  "author": "Puria Nafisi Azizi <puria@dyne.org>",
+  "author": "Ric Wood <ric@grislyeye.com>",
   "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0"
+  },
   "scripts": {
-    "serve": "docsify serve ./docs"
+    "test": "eslint **/*.js",
+    "test:fix": "eslint --fix **/*.js"
   }
 }

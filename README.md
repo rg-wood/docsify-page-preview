@@ -1,71 +1,46 @@
 <p align="center">
-    <img alt="docsify-link-preview" src="https://docsify.js.org/_media/icon.svg" width="150" />
+    <img alt="docsify-page-preview" src="https://docsify.js.org/_media/icon.svg" width="150" />
 </p>
 
 <h1 align="center">
-  docsify-link-preview</br>
-  <sub>a plugin to render link previews in docsify</sub>
+  docsify-page-preview</br>
+  <sub>a plugin to render Docsify page previews</sub>
 </h1>
 
 ---
 
-## 💾 Install
+## 💾 Usage
 
-1. Get your API key from https://www.linkpreview.net/
-
-1. Configure
+Insert JS module into Docsify document:
 
    ```html
-   <script>
-     window.$docsify = {
-       linkpreview: {
-         key: "YOUR_API_KEY",
-       },
-     };
-   </script>
+   <script src="//unpkg.com/docsify-page-preview/src/index.js" type="module"></script>
    ```
 
-1. Insert script into docsify document:
+The preview popup can be styled using these CSS variables:
 
-   ```html
-   <script src="//unpkg.com/docsify-link-preview/src/index.js"></script>
-   ```
-
-1. Insert the style
-   ```html
-   <link
-     rel="stylesheet"
-     href="//unpkg.com/docsify-link-preview/src/style.css"
-   />
-   ```
+| Variable | Description |
+| -------- | ----------- |
+| `--docsify-page-preview-background` | The [background](https://developer.mozilla.org/en-US/docs/Web/CSS/background) style for the popup.
+| `--docsify-page-preview-max-width` | The [max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width) style for the popup.
+| `--docsify-page-preview-max-height` | The [max-height](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) style for the popup.
 
 ---
 
-## 🎮 Usage
-
-When you want to render a preview just put your link into a:
-
-````markdown
-```link-preview
-link.com
-```
-````
-
----
 
 ## 🔥 Example
 
 - [index.html](docs/index.html)
-- [README.md](https://raw.githubusercontent.com/puria/docsify-link-preview/master/docs/README.md)
+- [README.md](https://raw.githubusercontent.com/rgwood/docsify-page-preview/master/docs/README.md)
 
 ---
 
 ## 👤 Contributing
 
 1.  🔀 [FORK IT](../../fork)
-2.  Create your feature branch `git checkout -b feature/branch`
+2.  Create your feature branch `git checkout -b branch`
 3.  Commit your changes `git commit -am 'Add some fooBar'`
-4.  Push to the branch `git push origin feature/branch`
+4.  Push to the branch `git push origin branch`
 5.  Create a new Pull Request
 6.  🙏 Thank you
 
@@ -73,7 +48,8 @@ link.com
 
 ## 💼 License
 
-    Copyright © 2020 - present, Puria Nafisi Azizi <puria@dyne.org>
+    Copyright © 2020 - present, Puria Nafisi Azizi <puria@dyne.org>,
+    Ric Wood <ric@grislyeye.com>
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
