@@ -78,7 +78,7 @@ class DocsifyPagePreview extends HTMLElement {
       const page = document.createElement('div')
       page.innerHTML = this.preview
 
-      this.popup = this.ref ? page.subsection(`#${this.ref}`) : page
+      this.popup = this.ref ? page.subsection(this.ref) : page
       this.popup.setAttribute('class', 'docsify preview-popup')
 
       this.append(this.popup)
