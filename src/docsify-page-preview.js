@@ -4,11 +4,10 @@ import { cached } from './cached.js'
 import './dom-structure.js'
 
 class DocsifyPagePreview extends HTMLElement {
-
   static defaultMinWidth = 300
   static defaultMinHeight = 200
   static defaultMaxWidth = 450
-  static defaultMinHeight = 200
+  static defaultMaxHeight = 200
 
   static popupStyle = `
     position: absolute;
@@ -16,7 +15,7 @@ class DocsifyPagePreview extends HTMLElement {
     min-width: var(--docsify-page-preview-min-width, ${this.defaultMinWidth}px);
     min-height: var(--docsify-page-preview-min-height, ${this.defaultMinHeight}px);
     max-width: var(--docsify-page-preview-max-width, ${this.defaultMaxWidth}px);
-    max-height: var(--docsify-page-preview-max-height, ${this.defaultMinHeight}px);
+    max-height: var(--docsify-page-preview-max-height, ${this.defaultMaxHeight}px);
 
     background: var(--docsify-page-preview-background, white);
     border-radius: .4em;
@@ -47,20 +46,17 @@ class DocsifyPagePreview extends HTMLElement {
     this.addEventListener('mouseout', this.hidePreview)
   }
 
-  get popupVerticalOffset() {
+  get popupVerticalOffset () {
     const computedMaxWidth = window
       .getComputedStyle(document.body)
       .getPropertyValue('--docsify-page-preview-max-width')
 
-    const maxWidth = computedMaxWidth
-      ? computedMaxWidth
-      : DocsifyPagePreview.defaultMaxWidth
-
+    const maxWidth = computedMaxWidth || DocsifyPagePreview.defaultMaxWidth
     const containerBox = document.getElementById('main').getBoundingClientRect()
     const containerWidth = containerBox.width
     const tooFarLeft = this.offsetLeft + maxWidth > containerWidth
 
-    if(tooFarLeft) {
+    if (tooFarLeft) {
       return this.offsetLeft - maxWidth
     } else {
       return this.offsetLeft
@@ -96,7 +92,6 @@ class DocsifyPagePreview extends HTMLElement {
   hidePreview () {
     if (this.popup) this.popup.hidden = true
   }
-
 }
 
 customElements.define('docsify-page-preview', DocsifyPagePreview)
