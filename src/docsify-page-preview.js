@@ -64,7 +64,6 @@ class DocsifyPagePreview extends HTMLElement {
   }
 
   async showPreview () {
-    console.log("showPreview()")
     if (!this.preview) {
       this.preview = await fetch(this.page, {
         method: 'GET',
