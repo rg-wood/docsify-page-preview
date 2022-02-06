@@ -1,7 +1,6 @@
-/* global marked */
-
 import { cached } from './cached.js'
 import './dom-structure.js'
+import { marked as markedjs } from './vendor/marked/src/marked.js'
 
 class DocsifyPagePreview extends HTMLElement {
   static defaultMinWidth = 300
@@ -40,7 +39,7 @@ class DocsifyPagePreview extends HTMLElement {
     super()
     this.page = this.getAttribute('page')
     this.ref = this.getAttribute('ref')
-    this.parser = cached(marked.parse)
+    this.parseMarkdown = cached(markedjs.parse)
 
     this.addEventListener('mouseover', this.showPreview)
     this.addEventListener('mouseout', this.hidePreview)
@@ -71,12 +70,12 @@ class DocsifyPagePreview extends HTMLElement {
         cache: 'no-cache'
       })
         .then(response => response.text())
-        .then(markdown => this.parser(markdown))
+        .then(this.parseMarkdown)
     }
 
     if (!this.popup) {
       const page = document.createElement('div')
-      page.innerHTML = `<!-- {docsify-ignore-all} --> ${this.preview}`
+      page.innerHTML = this.preview
 
       this.popup = this.ref ? page.subsection(this.ref) : page
       this.popup.setAttribute('class', 'docsify preview-popup')

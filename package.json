@@ -17,6 +17,9 @@
   },
   "author": "Ric Wood <ric@grislyeye.com>",
   "license": "MIT",
+  "dependencies": {
+    "marked": "^4.0.12"
+  },
   "devDependencies": {
     "eslint": "^8.0.0",
     "eslint-config-standard": "^16.0.3",
@@ -25,7 +28,9 @@
     "eslint-plugin-promise": "^5.2.0"
   },
   "scripts": {
+    "clean": "rm -r src/vendor",
     "test": "eslint **/*.js",
-    "test:fix": "eslint --fix **/*.js"
+    "test:fix": "eslint --fix **/*.js",
+    "postinstall": "mkdir -p src/vendor && mkdir -p src/vendor/marked && cp -r node_modules/marked/ src/vendor/marked"
   }
 }
