@@ -18,6 +18,7 @@
   "author": "Ric Wood <ric@grislyeye.com>",
   "license": "MIT",
   "dependencies": {
+    "dompurify": "^2.3.5",
     "marked": "^4.0.12"
   },
   "devDependencies": {
@@ -31,6 +32,6 @@
     "clean": "rm -r src/vendor",
     "test": "eslint **/*.js",
     "test:fix": "eslint --fix **/*.js",
-    "postinstall": "mkdir -p src/vendor && mkdir -p src/vendor/marked && cp -r node_modules/marked/ src/vendor/marked"
+    "postinstall": "mkdir -p src/vendor && mkdir -p src/vendor/marked && mkdir -p src/vendor/dompurify && cp -r node_modules/marked/ src/vendor/marked && cp -r node_modules/dompurify/ src/vendor/dompurify"
   }
 }

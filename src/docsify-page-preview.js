@@ -1,6 +1,6 @@
-import { cached } from './cached.js'
 import './dom-structure.js'
 import { marked as markedjs } from './vendor/marked/src/marked.js'
+import * as purify from './vendor/dompurify/dist/purify.es.js'
 
 class DocsifyPagePreview extends HTMLElement {
   static defaultMinWidth = 300
@@ -39,7 +39,6 @@ class DocsifyPagePreview extends HTMLElement {
     super()
     this.page = this.getAttribute('page')
     this.ref = this.getAttribute('ref')
-    this.parseMarkdown = cached(markedjs.parse)
 
     this.addEventListener('mouseover', this.showPreview)
     this.addEventListener('mouseout', this.hidePreview)
@@ -70,7 +69,7 @@ class DocsifyPagePreview extends HTMLElement {
         cache: 'no-cache'
       })
         .then(response => response.text())
-        .then(this.parseMarkdown)
+        .then(md => markedjs.parse(md, { sanitizer: purify.default.sanitizer }))
     }
 
     if (!this.popup) {
