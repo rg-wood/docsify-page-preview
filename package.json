@@ -1,6 +1,6 @@
 {
   "name": "docsify-page-preview",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Docsify Page previews",
   "files": [
     "src"
@@ -32,6 +32,6 @@
     "clean": "rm -r src/vendor",
     "test": "eslint **/*.js",
     "test:fix": "eslint --fix **/*.js",
-    "postinstall": "mkdir -p src/vendor && mkdir -p src/vendor/marked && mkdir -p src/vendor/dompurify && cp -r node_modules/marked/ src/vendor/marked && cp -r node_modules/dompurify/ src/vendor/dompurify"
+    "build": "mkdir -p src/vendor && mkdir -p src/vendor/marked && mkdir -p src/vendor/dompurify && cp -r node_modules/marked/ src/vendor/marked && cp -r node_modules/dompurify/ src/vendor/dompurify"
   }
 }
