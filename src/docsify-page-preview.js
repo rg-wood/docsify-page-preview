@@ -64,6 +64,7 @@ class DocsifyPagePreview extends HTMLElement {
   }
 
   async showPreview () {
+    console.log("showPreview()")
     if (!this.preview) {
       this.preview = await fetch(this.page, {
         method: 'GET',
@@ -76,7 +77,7 @@ class DocsifyPagePreview extends HTMLElement {
 
     if (!this.popup) {
       const page = document.createElement('div')
-      page.innerHTML = this.preview
+      page.innerHTML = `<!-- {docsify-ignore-all} --> ${this.preview}`
 
       this.popup = this.ref ? page.subsection(this.ref) : page
       this.popup.setAttribute('class', 'docsify preview-popup')

@@ -1,7 +1,5 @@
 HTMLElement.prototype.subsection = function (id) {
-  const subsection = this.cloneNode(true)
-
-  nestedChildNodes(Array.from(subsection.childNodes))
+  nestedChildNodes(Array.from(this.childNodes))
     .flat(5)
     .every((node) => {
       if (node.id === id) {
@@ -13,7 +11,7 @@ HTMLElement.prototype.subsection = function (id) {
         return true
       }
     })
-  return subsection
+  return this
 }
 
 const nestedChildNodes = (nodelist) => {
