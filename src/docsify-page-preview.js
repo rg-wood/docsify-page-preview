@@ -62,6 +62,8 @@ class DocsifyPagePreview extends HTMLElement {
   }
 
   async showPreview () {
+    this.show = true
+
     if (!this.preview) {
       this.preview = await fetch(this.page, {
         method: 'GET',
@@ -82,12 +84,15 @@ class DocsifyPagePreview extends HTMLElement {
       this.append(this.popup)
     }
 
-    this.popup.style.cssText = DocsifyPagePreview.popupStyle
-    this.popup.style.left = `${this.popupVerticalOffset}px`
-    this.popup.hidden = false
+    if(this.show) {
+      this.popup.style.cssText = DocsifyPagePreview.popupStyle
+      this.popup.style.left = `${this.popupVerticalOffset}px`
+      this.popup.hidden = false
+    }
   }
 
   hidePreview () {
+    this.show = false
     if (this.popup) this.popup.hidden = true
   }
 }
