@@ -65,13 +65,14 @@ class DocsifyPagePreview extends HTMLElement {
     this.show = true
 
     if (!this.preview) {
-      this.preview = await fetch(this.page, {
-        method: 'GET',
-        mode: 'same-origin',
-        cache: 'no-cache'
-      })
-        .then(response => response.text())
-        .then(md => markedjs.parse(md, { sanitizer: purify.default.sanitizer }))
+      this.preview =
+        await fetch(this.page, {
+          method: 'GET',
+          mode: 'same-origin',
+          cache: 'no-cache'
+        })
+          .then(response => response.text())
+          .then(md => markedjs.parse(md, { sanitizer: purify.default.sanitizer }))
     }
 
     if (!this.popup) {
@@ -84,7 +85,7 @@ class DocsifyPagePreview extends HTMLElement {
       this.append(this.popup)
     }
 
-    if(this.show) {
+    if (this.show) {
       this.popup.style.cssText = DocsifyPagePreview.popupStyle
       this.popup.style.left = `${this.popupVerticalOffset}px`
       this.popup.hidden = false
