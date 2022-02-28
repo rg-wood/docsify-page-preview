@@ -1,6 +1,6 @@
 {
   "name": "docsify-page-preview",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Docsify Page previews",
   "files": [
     "src"
@@ -18,15 +18,15 @@
   "author": "Ric Wood <ric@grislyeye.com>",
   "license": "MIT",
   "dependencies": {
-    "dompurify": "^2.3.5",
+    "dompurify": "^2.3.6",
     "marked": "^4.0.12"
   },
   "devDependencies": {
-    "eslint": "^8.0.0",
+    "eslint": "^8.10.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.2.0"
+    "eslint-plugin-promise": "^6.0.0"
   },
   "scripts": {
     "clean": "rm -r src/vendor",
