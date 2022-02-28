@@ -71,11 +71,18 @@ class DocsifyPagePreview extends HTMLElement {
           mode: 'same-origin',
           cache: 'no-cache'
         })
+          .then(response => {
+            if (response.status >= 400) {
+              throw new Error(`Fetch error: page=[${this.page}], status=[${response.status}]`)
+            } else {
+              return response
+            }
+          })
           .then(response => response.text())
           .then(md => markedjs.parse(md, { sanitizer: purify.default.sanitizer }))
     }
 
-    if (!this.popup) {
+    if (!this.popup && this.preview) {
       const page = document.createElement('div')
       page.innerHTML = this.preview
 
@@ -85,7 +92,7 @@ class DocsifyPagePreview extends HTMLElement {
       this.append(this.popup)
     }
 
-    if (this.show) {
+    if (this.show && this.preview) {
       this.popup.style.cssText = DocsifyPagePreview.popupStyle
       this.popup.style.left = `${this.popupVerticalOffset}px`
       this.popup.hidden = false
